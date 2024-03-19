@@ -1,75 +1,62 @@
 import { useState } from "react";
 import ReactCountryFlag from "react-country-flag";
+import { useTranslation } from "react-i18next";
 
 import Menu from "@mui/material/Menu";
-import MenuItem, { MenuItemProps } from "@mui/material/MenuItem";
 import TranslateIcon from "@mui/icons-material/Translate";
+import { StyledButton, StyledMenuItem } from "./Languages.styled";
 
-import styled from "styled-components";
-
-interface StyledMenuItemProps extends MenuItemProps {
-  active?: string | null;
-}
-
-const StyledMenuItem = styled(MenuItem)<StyledMenuItemProps>`
-  ${({ active }) =>
-    active &&
-    `
-    border-right: 3px solid blue;
-  `}
-`;
-
-type Lang = "PL" | "US" | "DE";
+import { Lang } from "./Types";
 
 export const Languages = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const [languageSelectorIsOpen, setLanguageSelectorIsOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState("PL");
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
 
-  const handleClick = (e) => {
-    setLanguageSelectorIsOpen(true);
-    setAnchorEl(e.currentTarget);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
-    setLanguageSelectorIsOpen(false);
+    setAnchorEl(null);
   };
 
-  const handleSelectLanguage = (lang: Lang) => {
-    setSelectedLanguage(lang);
-    setLanguageSelectorIsOpen(false);
-  };
+  const { t, i18n } = useTranslation();
+  const languages: Lang[] = [
+    { code: "PL", name: "Polski" },
+    { code: "US", name: "English" },
+    { code: "DE", name: "Germany" },
+  ];
 
+  console.log(open);
   return (
     <>
-      <TranslateIcon color="info" onClick={handleClick} />
+      <StyledButton onClick={handleClick}>
+        <TranslateIcon color="info" />
+      </StyledButton>
+
       <Menu
+        id="basic-menu"
         anchorEl={anchorEl}
-        open={languageSelectorIsOpen}
+        open={open}
         onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
       >
-        <StyledMenuItem
-          active={selectedLanguage === "PL" ? "active" : null}
-          onClick={() => handleSelectLanguage("PL")}
-        >
-          <ReactCountryFlag svg countryCode="PL" />
-          Polski
-        </StyledMenuItem>
-        <StyledMenuItem
-          active={selectedLanguage === "US" ? "active" : null}
-          onClick={() => handleSelectLanguage("US")}
-        >
-          <ReactCountryFlag svg countryCode="US" />
-          English
-        </StyledMenuItem>
-        <StyledMenuItem
-          active={selectedLanguage === "DE" ? "active" : null}
-          onClick={() => handleSelectLanguage("DE")}
-        >
-          <ReactCountryFlag svg countryCode="DE" />
-          Deutsch
-        </StyledMenuItem>
+        {languages.map(({ code, name }) => (
+          <StyledMenuItem
+            key={code}
+            onClick={() => {
+              i18n.changeLanguage(code);
+              setAnchorEl(null);
+            }}
+          >
+            <ReactCountryFlag svg countryCode={code} />
+            {name}
+          </StyledMenuItem>
+        ))}
       </Menu>
+      <p>{t("welcome")}</p>
     </>
   );
 };
