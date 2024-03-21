@@ -5,12 +5,12 @@ import { useTranslation } from "react-i18next";
 import Menu from "@mui/material/Menu";
 import TranslateIcon from "@mui/icons-material/Translate";
 import { StyledButton, StyledMenuItem } from "./Languages.styled";
-
-import { Lang } from "./Types";
+import { languages } from "./LanguagesList";
 
 export const Languages = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const { t, i18n } = useTranslation();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -20,14 +20,6 @@ export const Languages = () => {
     setAnchorEl(null);
   };
 
-  const { t, i18n } = useTranslation();
-  const languages: Lang[] = [
-    { code: "PL", name: "Polski" },
-    { code: "US", name: "English" },
-    { code: "DE", name: "Germany" },
-  ];
-
-  console.log(open);
   return (
     <>
       <StyledButton onClick={handleClick}>
@@ -43,19 +35,20 @@ export const Languages = () => {
           "aria-labelledby": "basic-button",
         }}
       >
-        {languages.map(({ code, name }) => (
+        {languages.map(({ code, iconCode, name }) => (
           <StyledMenuItem
-            key={code}
+            key={iconCode}
             onClick={() => {
               i18n.changeLanguage(code);
               setAnchorEl(null);
             }}
           >
-            <ReactCountryFlag svg countryCode={code} />
+            <ReactCountryFlag svg countryCode={iconCode} />
             {name}
           </StyledMenuItem>
         ))}
       </Menu>
+
       <p>{t("welcome")}</p>
     </>
   );
