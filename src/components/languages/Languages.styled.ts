@@ -3,7 +3,7 @@ import { IconButton } from "@mui/material";
 import styled from "styled-components";
 
 interface StyledMenuItemProps extends MenuItemProps {
-  active?: string | null;
+  active?: boolean;
 }
 export const StyledButton = styled(IconButton)`
   width: 1.5rem;
