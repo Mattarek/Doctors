@@ -37,6 +37,7 @@ export const Languages = () => {
       >
         {languages.map(({ code, iconCode, name }) => (
           <StyledMenuItem
+            $active={true}
             key={iconCode}
             onClick={() => {
               i18n.changeLanguage(code);

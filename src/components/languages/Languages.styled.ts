@@ -1,9 +1,9 @@
 import MenuItem, { MenuItemProps } from "@mui/material/MenuItem";
 import { IconButton } from "@mui/material";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface StyledMenuItemProps extends MenuItemProps {
-  active?: boolean;
+  $active?: boolean;
 }
 export const StyledButton = styled(IconButton)`
   width: 1.5rem;
@@ -14,9 +14,14 @@ export const StyledButton = styled(IconButton)`
 `;
 
 export const StyledMenuItem = styled(MenuItem)<StyledMenuItemProps>`
-  ${({ active }) =>
-    active &&
-    `
-  border-right: 3px solid blue;
-`}
+  ${({ $active }) =>
+    $active &&
+    css`
+    &&& {
+      !important
+      border-right: 3px solid blue;  
+  }
+
+
+    `}
 `;
