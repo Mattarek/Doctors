@@ -11,6 +11,7 @@ export const Languages = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const { t, i18n } = useTranslation();
+  const [activeItem, setActiveItem] = useState<"gb" | "pl" | "de">("gb");
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -37,9 +38,10 @@ export const Languages = () => {
       >
         {languages.map(({ code, iconCode, name }) => (
           <StyledMenuItem
-            $active={true}
             key={iconCode}
+            $active={activeItem === iconCode}
             onClick={() => {
+              setActiveItem(iconCode);
               i18n.changeLanguage(code);
               setAnchorEl(null);
             }}

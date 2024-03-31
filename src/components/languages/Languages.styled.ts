@@ -17,11 +17,8 @@ export const StyledMenuItem = styled(MenuItem)<StyledMenuItemProps>`
   ${({ $active }) =>
     $active &&
     css`
-    &&& {
-      !important
-      border-right: 3px solid blue;  
-  }
-
-
+      && {
+        border-right: 3px solid blue;
+      }
     `}
 `;
