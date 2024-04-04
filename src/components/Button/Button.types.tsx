@@ -3,6 +3,6 @@ import { MouseEvent } from "react";
 
 export interface MuiButtonProps extends ButtonProps {
   onAsyncClick?: (e: MouseEvent<HTMLButtonElement>) => Promise<void>;
-  loading: boolean;
-  setLoading: (value: boolean) => void;
+  text: string;
+  loading?: boolean;
 }

@@ -8,11 +8,13 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const handleClick = async (e: MouseEvent<HTMLButtonElement>) => {
+    setLoading(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
     } catch (error) {
       console.error("Error:", error);
     }
+    setLoading(false);
   };
 
   return (
@@ -22,7 +24,7 @@ function App() {
         variant="contained"
         onAsyncClick={(e) => handleClick(e)}
         loading={loading}
-        setLoading={setLoading}
+        text="buttonGetData"
       />
       <Languages />
       <p>{t("read-the-docs")}</p>

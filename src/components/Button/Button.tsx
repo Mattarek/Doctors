@@ -10,24 +10,24 @@ export const MuiButton = ({
   variant,
   color,
   loading,
-  setLoading,
+  text,
+  ...props
 }: MuiButtonProps) => {
   const { t } = useTranslation();
 
   const handleClick = async (e: MouseEvent<HTMLButtonElement>) => {
     if (onAsyncClick) {
-      setLoading(true);
       try {
         await onAsyncClick(e);
       } catch (error) {
         console.error("Error:", error);
       }
-      setLoading(false);
     } else if (onClick) {
       onClick(e);
     }
   };
 
+  console.log(text);
   return (
     <StyledButton
       onClick={handleClick}
@@ -35,6 +35,7 @@ export const MuiButton = ({
       variant={variant}
       color={color}
       style={{ position: "relative" }}
+      {...props}
     >
       {loading && (
         <CircularProgress
@@ -45,7 +46,8 @@ export const MuiButton = ({
           }}
         />
       )}
-      {t("buttonGetData")}
+
+      {t(text)}
     </StyledButton>
   );
 };
