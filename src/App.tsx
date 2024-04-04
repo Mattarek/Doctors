@@ -5,16 +5,14 @@ import { MouseEvent, useState } from "react";
 
 function App() {
   const { t } = useTranslation();
-  const [loading, setLoading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleClick = async (e: MouseEvent<HTMLButtonElement>) => {
-    setLoading(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
     } catch (error) {
       console.error("Error:", error);
     }
-    setLoading(false);
   };
 
   return (
@@ -23,7 +21,7 @@ function App() {
         color="primary"
         variant="contained"
         onAsyncClick={(e) => handleClick(e)}
-        loading={loading}
+        isSubmitting={isSubmitting}
         text="buttonGetData"
       />
       <Languages />
