@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <Languages />
-      <p>{t("translation.read-the-docs")}</p>
+      <p>{t("read-the-docs")}</p>
     </>
   );
 }
