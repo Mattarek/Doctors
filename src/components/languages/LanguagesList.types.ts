@@ -1,4 +1,8 @@
-import { Lang } from "./Languages.types";
+interface Lang {
+  code: "en" | "pl" | "de";
+  iconCode: "gb" | "pl" | "de";
+  name: "English" | "Polski" | "Deutch";
+}
 
 export const languages: Lang[] = [
   { code: "pl", iconCode: "pl", name: "Polski" },

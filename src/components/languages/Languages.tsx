@@ -5,12 +5,12 @@ import { useTranslation } from "react-i18next";
 import Menu from "@mui/material/Menu";
 import TranslateIcon from "@mui/icons-material/Translate";
 import { StyledButton, StyledMenuItem } from "./Languages.styled";
-import { languages } from "./LanguagesList";
+import { languages } from "./LanguagesList.types";
 
 export const Languages = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -41,6 +41,7 @@ export const Languages = () => {
             $active={code === i18n.language}
             onClick={() => {
               i18n.changeLanguage(code);
+              localStorage.setItem("language", code);
               setAnchorEl(null);
             }}
           >
@@ -49,8 +50,6 @@ export const Languages = () => {
           </StyledMenuItem>
         ))}
       </Menu>
-
-      <p>{t("welcome")}</p>
     </>
   );
 };
