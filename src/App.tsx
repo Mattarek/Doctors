@@ -6,13 +6,6 @@ import { useEffect } from "react";
 function App() {
   const { t, i18n } = useTranslation();
 
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem("language");
-    if (savedLanguage) {
-      i18n.changeLanguage(savedLanguage);
-    }
-  }, [i18n]);
-
   return (
     <>
       <Languages />
