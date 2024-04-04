@@ -1,8 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Languages } from "./components/languages/Languages";
 
-import { useEffect } from "react";
-
 function App() {
   const { t, i18n } = useTranslation();
 
