@@ -31,9 +31,6 @@ export const Languages = () => {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        MenuListProps={{
-          "aria-labelledby": "basic-button",
-        }}
       >
         {languages.map(({ code, iconCode, name }) => (
           <StyledMenuItem
@@ -41,7 +38,6 @@ export const Languages = () => {
             $active={code === i18n.language}
             onClick={() => {
               i18n.changeLanguage(code);
-              localStorage.setItem("language", code);
               setAnchorEl(null);
             }}
           >
