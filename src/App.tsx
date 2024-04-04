@@ -1,10 +1,11 @@
 import { useTranslation } from "react-i18next";
 import { Languages } from "./components/languages/Languages";
 import { MuiButton } from "./components/Button/Button";
-import { MouseEvent } from "react";
+import { MouseEvent, useState } from "react";
 
 function App() {
   const { t } = useTranslation();
+  const [loading, setLoading] = useState(false);
 
   const handleClick = async (e: MouseEvent<HTMLButtonElement>) => {
     try {
@@ -16,7 +17,13 @@ function App() {
 
   return (
     <>
-      <MuiButton onAsyncClick={(e) => handleClick(e)} />
+      <MuiButton
+        color="primary"
+        variant="contained"
+        onAsyncClick={(e) => handleClick(e)}
+        loading={loading}
+        setLoading={setLoading}
+      />
       <Languages />
       <p>{t("read-the-docs")}</p>
     </>
