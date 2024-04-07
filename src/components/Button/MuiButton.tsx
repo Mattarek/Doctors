@@ -26,20 +26,11 @@ export const MuiButton = ({
     }
   };
 
-  useEffect(() => {
-    if (isSubmitting) {
-      setLoading(true);
-    } else {
-      setLoading(false);
-    }
-  }, [isSubmitting]);
-
   console.log(children);
   return (
     <StyledButton
       onClick={handleClick}
       disabled={loading || isSubmitting}
-      style={{ position: "relative" }}
       {...props}
     >
       {loading && (
