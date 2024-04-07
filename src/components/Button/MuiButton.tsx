@@ -1,20 +1,16 @@
 import { MouseEvent, useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
 import CircularProgress from "@mui/material/CircularProgress";
-import { StyledButton } from "./Button.styled";
 import { MuiButtonProps } from "./Button.types";
+import { StyledButton } from "./Button.styled";
 
 export const MuiButton = ({
   onClick,
   onAsyncClick,
-  variant,
-  color,
   isSubmitting,
-  text,
+  children,
   ...props
 }: MuiButtonProps) => {
   const [loading, setLoading] = useState(false);
-  const { t } = useTranslation();
 
   const handleClick = async (e: MouseEvent<HTMLButtonElement>) => {
     if (onAsyncClick) {
@@ -38,12 +34,11 @@ export const MuiButton = ({
     }
   }, [isSubmitting]);
 
+  console.log(children);
   return (
     <StyledButton
       onClick={handleClick}
       disabled={loading || isSubmitting}
-      variant={variant}
-      color={color}
       style={{ position: "relative" }}
       {...props}
     >
@@ -56,8 +51,7 @@ export const MuiButton = ({
           }}
         />
       )}
-
-      {t(text)}
+      {children}
     </StyledButton>
   );
 };

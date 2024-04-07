@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Languages } from "./components/languages/Languages";
-import { MuiButton } from "./components/Button/Button";
+import { MuiButton } from "./components/Button/MuiButton";
 import { MouseEvent, useState } from "react";
 
 function App() {
@@ -18,14 +18,13 @@ function App() {
   return (
     <>
       <MuiButton
-        color="primary"
         variant="contained"
         onAsyncClick={(e) => handleClick(e)}
         isSubmitting={isSubmitting}
-        text="buttonGetData"
-      />
+      >
+        {t("buttonGetData")}
+      </MuiButton>
       <Languages />
-      <p>{t("read-the-docs")}</p>
     </>
   );
 }
