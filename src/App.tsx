@@ -21,7 +21,6 @@ function App() {
         variant="contained"
         onAsyncClick={(e) => handleClick(e)}
         isSubmitting={isSubmitting}
-        sx={{ position: "relative" }}
       >
         {t("buttonGetData")}
       </MuiButton>
