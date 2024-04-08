@@ -27,15 +27,13 @@ export const Button = ({
     setLoading(false);
   };
 
-  console.log(children);
   return (
     <StyledButton
       onClick={handleClick}
-      disabled={loading || isSubmitting || disabled}
+      disabled={disabled || isSubmitting || loading}
       {...props}
     >
-      {disabled ||
-        isSubmitting ||
+      {isSubmitting ||
         (loading && (
           <CircularProgress
             size={24}
