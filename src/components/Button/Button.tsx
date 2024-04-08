@@ -14,17 +14,19 @@ export const Button = ({
   const [loading, setLoading] = useState(false);
 
   const handleClick = async (e: MouseEvent<HTMLButtonElement>) => {
-    setLoading(true);
+    
     if (onAsyncClick) {
+      setLoading(true);
       try {
         await onAsyncClick(e);
       } catch (error) {
         console.error("Error:", error);
       }
+      setLoading(false);
     } else if (onClick) {
       onClick(e);
     }
-    setLoading(false);
+    
   };
 
   return (
@@ -33,8 +35,7 @@ export const Button = ({
       disabled={disabled || isSubmitting || loading}
       {...props}
     >
-      {isSubmitting ||
-        (loading && (
+      {(isSubmitting ||  loading) && (
           <CircularProgress
             size={24}
             sx={{
