@@ -1,6 +1,6 @@
-import { MouseEvent } from "react";
+import { MouseEvent, useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
-import { Button as ButtonProps } from "./Button.types";
+import { ButtonProps } from "./Button.types";
 import { StyledButton } from "./Button.styled";
 
 export const Button = ({
@@ -8,11 +8,13 @@ export const Button = ({
   onAsyncClick,
   isSubmitting,
   children,
-  loading,
   disabled,
   ...props
 }: ButtonProps) => {
+  const [loading, setLoading] = useState(false);
+
   const handleClick = async (e: MouseEvent<HTMLButtonElement>) => {
+    setLoading(true);
     if (onAsyncClick) {
       try {
         await onAsyncClick(e);
@@ -22,23 +24,26 @@ export const Button = ({
     } else if (onClick) {
       onClick(e);
     }
+    setLoading(false);
   };
 
+  console.log(children);
   return (
     <StyledButton
       onClick={handleClick}
       disabled={loading || isSubmitting || disabled}
       {...props}
     >
-      {loading && (
-        <CircularProgress
-          size={24}
-          sx={{
-            position: "absolute",
-            zIndex: 1,
-          }}
-        />
-      )}
+      {isSubmitting ||
+        (loading && (
+          <CircularProgress
+            size={24}
+            sx={{
+              position: "absolute",
+              zIndex: 1,
+            }}
+          />
+        ))}
       {children}
     </StyledButton>
   );

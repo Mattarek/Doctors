@@ -1,9 +1,7 @@
-import { ButtonProps } from "@mui/material/";
+import { ButtonProps as ButtonMuiProps } from "@mui/material/";
 import { MouseEvent } from "react";
 
-export interface Button extends ButtonProps {
-  onAsyncClick?: (e: MouseEvent<HTMLButtonElement>) => Promise<void>;
+export interface ButtonProps extends ButtonMuiProps {
+  onAsyncClick?: (e: MouseEvent<HTMLButtonElement>) => Promise<void | unknown>;
   isSubmitting?: boolean;
-  loading: boolean;
-  disabled: boolean;
 }
