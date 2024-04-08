@@ -14,7 +14,6 @@ export const Button = ({
   const [loading, setLoading] = useState(false);
 
   const handleClick = async (e: MouseEvent<HTMLButtonElement>) => {
-    
     if (onAsyncClick) {
       setLoading(true);
       try {
@@ -26,7 +25,6 @@ export const Button = ({
     } else if (onClick) {
       onClick(e);
     }
-    
   };
 
   return (
@@ -35,15 +33,15 @@ export const Button = ({
       disabled={disabled || isSubmitting || loading}
       {...props}
     >
-      {(isSubmitting ||  loading) && (
-          <CircularProgress
-            size={24}
-            sx={{
-              position: "absolute",
-              zIndex: 1,
-            }}
-          />
-        ))}
+      {(isSubmitting || loading) && (
+        <CircularProgress
+          size={24}
+          sx={{
+            position: "absolute",
+            zIndex: 1,
+          }}
+        />
+      )}
       {children}
     </StyledButton>
   );
