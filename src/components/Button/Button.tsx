@@ -1,36 +1,33 @@
-import { MouseEvent, useEffect, useState } from "react";
+import { MouseEvent } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
-import { MuiButtonProps } from "./Button.types";
+import { Button as ButtonProps } from "./Button.types";
 import { StyledButton } from "./Button.styled";
 
-export const MuiButton = ({
+export const Button = ({
   onClick,
   onAsyncClick,
   isSubmitting,
   children,
+  loading,
+  disabled,
   ...props
-}: MuiButtonProps) => {
-  const [loading, setLoading] = useState(false);
-
+}: ButtonProps) => {
   const handleClick = async (e: MouseEvent<HTMLButtonElement>) => {
     if (onAsyncClick) {
-      setLoading(true);
       try {
         await onAsyncClick(e);
       } catch (error) {
         console.error("Error:", error);
       }
-      setLoading(false);
     } else if (onClick) {
       onClick(e);
     }
   };
 
-  console.log(children);
   return (
     <StyledButton
       onClick={handleClick}
-      disabled={loading || isSubmitting}
+      disabled={loading || isSubmitting || disabled}
       {...props}
     >
       {loading && (
