@@ -34,7 +34,8 @@ export const Button = ({
       disabled={loading || isSubmitting || disabled}
       {...props}
     >
-      {isSubmitting ||
+      {disabled ||
+        isSubmitting ||
         (loading && (
           <CircularProgress
             size={24}
