@@ -2,6 +2,9 @@ import { useTranslation } from "react-i18next";
 import { Languages } from "./components/languages/Languages";
 import { Button } from "./components/Button/Button";
 import { useState } from "react";
+import { ThemeProvider } from "styled-components";
+import { ThemeProvider as MuiThemeProvider } from "@mui/material";
+import { theme } from "./components/theme/theme";
 
 function App() {
   const { t } = useTranslation();
@@ -17,17 +20,20 @@ function App() {
   };
 
   return (
-    <>
-      <Button
-        variant="contained"
-        onAsyncClick={handleClick}
-        isSubmitting={isSubmitting}
-        disabled={disabled}
-      >
-        <p>{t("buttonGetData")}</p>
-      </Button>
-      <Languages />
-    </>
+    <MuiThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <Button
+          variant="contained"
+          onAsyncClick={handleClick}
+          isSubmitting={isSubmitting}
+          disabled={disabled}
+        >
+          <p>{t("buttonGetData")}</p>
+        </Button>
+
+        <Languages />
+      </ThemeProvider>
+    </MuiThemeProvider>
   );
 }
 
