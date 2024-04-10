@@ -7,11 +7,11 @@ export const theme = createTheme({
       white: "#fff",
     },
     primary: {
-      main: "#056a95",
+      main: "#9E303C",
       contrastText: "#ffffff",
     },
     secondary: {
-      main: "#709fb0",
+      main: "#7950DE",
       contrastText: "#ffffff",
     },
   },
