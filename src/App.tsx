@@ -4,7 +4,7 @@ import { Button } from "./components/Button/Button";
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { ThemeProvider as MuiThemeProvider } from "@mui/material";
-import { theme } from "./components/theme/theme";
+import { theme } from "./theme/theme";
 
 function App() {
   const { t } = useTranslation();
