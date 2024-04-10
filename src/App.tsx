@@ -3,8 +3,15 @@ import { Languages } from "./components/languages/Languages";
 import { Button } from "./components/Button/Button";
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { ThemeProvider as MuiThemeProvider } from "@mui/material";
+import {
+  Box,
+  CssBaseline,
+  Grid,
+  ThemeProvider as MuiThemeProvider,
+  TextField,
+} from "@mui/material";
 import { theme } from "./styles/theme";
+import { Layout } from "./layout/Layout";
 
 function App() {
   const { t } = useTranslation();
@@ -22,16 +29,26 @@ function App() {
   return (
     <MuiThemeProvider theme={theme}>
       <ThemeProvider theme={theme}>
-        <Button
-          variant="contained"
-          onAsyncClick={handleClick}
-          isSubmitting={isSubmitting}
-          disabled={disabled}
-        >
-          <p>{t("buttonGetData")}</p>
-        </Button>
-
-        <Languages />
+        <CssBaseline />
+        <Layout>
+          {/* <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "100%",
+              maxWidth: "50%",
+              margin: "0 auto",
+            }}
+          >
+            <TextField label="Name" variant="outlined" />
+            <TextField label="Surname" variant="outlined" />
+            <Button variant="contained" color="info" onAsyncClick={handleClick}>
+              {t("buttonGetData")}
+            </Button>
+            <Languages />
+          </Box> */}
+        </Layout>
       </ThemeProvider>
     </MuiThemeProvider>
   );
