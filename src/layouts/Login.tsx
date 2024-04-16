@@ -1,11 +1,12 @@
 import { Box, Paper } from "@mui/material";
 import { ReactNode } from "react";
 
-interface LayoutProps {
+interface LoginProps {
   children: ReactNode;
+  title: string;
 }
 
-export const Layout = ({ children }: LayoutProps) => {
+export const Login = ({ children, title }: LoginProps) => {
   return (
     <Box
       sx={{
@@ -30,6 +31,7 @@ export const Layout = ({ children }: LayoutProps) => {
           minWidth: "fit-content",
         }}
       >
+        <h2>{title}</h2>
         {children}
       </Paper>
     </Box>

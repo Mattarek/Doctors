@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { CssBaseline, ThemeProvider as MuiThemeProvider } from "@mui/material";
 import { theme } from "./styles/theme";
-import { Layout } from "./layout/Layout";
+import { Login } from "./layouts/Login";
 
 function App() {
   const { t } = useTranslation();
@@ -23,7 +23,7 @@ function App() {
     <MuiThemeProvider theme={theme}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Layout>
+        <Login title="Zaloguj się">
           {/* <Box
             sx={{
               display: "flex",
@@ -41,7 +41,7 @@ function App() {
             </Button>
             <Languages />
           </Box> */}
-        </Layout>
+        </Login>
       </ThemeProvider>
     </MuiThemeProvider>
   );
