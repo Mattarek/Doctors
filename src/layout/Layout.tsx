@@ -13,8 +13,8 @@ export const Layout = ({ children }: LayoutProps) => {
         alignItems: "center",
         justifyContent: "center",
         background:
-          "linear-gradient(90deg, rgba(53,42,245,1) 0%, rgba(21,129,181,1) 25%, rgba(30,186,184,1) 49%, rgba(21,129,181,1) 75%, rgba(53,42,245,1) 100%)",
-        minHeight: "100vh",
+          "linear-gradient(to right, #d0cece, #6C9FE5, #6CA4F0, #6C9FE5, #d0cece)",
+        height: "100vh",
       }}
     >
       <Paper
@@ -23,7 +23,6 @@ export const Layout = ({ children }: LayoutProps) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          borderTop: "8px solid black",
 
           width: "35vw",
           minHeight: "45vh",

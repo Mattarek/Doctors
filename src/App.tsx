@@ -1,15 +1,8 @@
 import { useTranslation } from "react-i18next";
-import { Languages } from "./components/languages/Languages";
-import { Button } from "./components/Button/Button";
+
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
-import {
-  Box,
-  CssBaseline,
-  Grid,
-  ThemeProvider as MuiThemeProvider,
-  TextField,
-} from "@mui/material";
+import { CssBaseline, ThemeProvider as MuiThemeProvider } from "@mui/material";
 import { theme } from "./styles/theme";
 import { Layout } from "./layout/Layout";
 
