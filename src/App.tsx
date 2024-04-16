@@ -1,10 +1,9 @@
 import { useTranslation } from "react-i18next";
-
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { CssBaseline, ThemeProvider as MuiThemeProvider } from "@mui/material";
 import { theme } from "./styles/theme";
-import { Login } from "./layouts/Login";
+import { Login } from "./layouts/loginLayout";
 
 function App() {
   const { t } = useTranslation();
@@ -23,7 +22,7 @@ function App() {
     <MuiThemeProvider theme={theme}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Login title="Zaloguj się">
+        <LoginLayout title="Zaloguj się">
           {/* <Box
             sx={{
               display: "flex",
@@ -41,7 +40,7 @@ function App() {
             </Button>
             <Languages />
           </Box> */}
-        </Login>
+        </LoginLayout>
       </ThemeProvider>
     </MuiThemeProvider>
   );
