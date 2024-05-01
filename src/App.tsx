@@ -2,7 +2,6 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import {
-  Box,
   CssBaseline,
   ThemeProvider as MuiThemeProvider,
   TextField,

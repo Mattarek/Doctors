@@ -1,5 +1,6 @@
-import { Box, Paper, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { ReactNode } from "react";
+import { StyledPaper } from "../components/Paper/Paper.styled";
 
 interface LoginProps {
   children: ReactNode;
@@ -18,7 +19,7 @@ export const LoginLayout = ({ children, title }: LoginProps) => {
         height: "100vh",
       }}
     >
-      <Paper
+      <StyledPaper
         elevation={24}
         sx={{
           justifyContent: "center",
@@ -40,7 +41,7 @@ export const LoginLayout = ({ children, title }: LoginProps) => {
           {title}
         </Typography>
         <Box>{children}</Box>
-      </Paper>
+      </StyledPaper>
     </Box>
   );
 };
