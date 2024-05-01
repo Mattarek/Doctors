@@ -6,7 +6,7 @@ interface LoginProps {
   title: string;
 }
 
-export const Login = ({ children, title }: LoginProps) => {
+export const LoginLayout = ({ children, title }: LoginProps) => {
   return (
     <Box
       sx={{
