@@ -1,9 +1,16 @@
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { CssBaseline, ThemeProvider as MuiThemeProvider } from "@mui/material";
+import {
+  Box,
+  CssBaseline,
+  ThemeProvider as MuiThemeProvider,
+  TextField,
+} from "@mui/material";
 import { theme } from "./styles/theme";
-import { Login } from "./layouts/loginLayout";
+import { Button } from "./components/Button/Button";
+import { LoginLayout } from "./layouts/loginLayout";
+import { Languages } from "./components/languages/Languages";
 
 function App() {
   const { t } = useTranslation();
@@ -23,23 +30,12 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <LoginLayout title="Zaloguj się">
-          {/* <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              width: "100%",
-              maxWidth: "50%",
-              margin: "0 auto",
-            }}
-          >
-            <TextField label="Name" variant="outlined" />
-            <TextField label="Surname" variant="outlined" />
-            <Button variant="contained" color="info" onAsyncClick={handleClick}>
-              {t("buttonGetData")}
-            </Button>
-            <Languages />
-          </Box> */}
+          <TextField label="Name" variant="outlined" />
+          <TextField label="Surname" variant="outlined" />
+          <Button variant="contained" color="info" onAsyncClick={handleClick}>
+            {t("buttonGetData")}
+          </Button>
+          <Languages />
         </LoginLayout>
       </ThemeProvider>
     </MuiThemeProvider>

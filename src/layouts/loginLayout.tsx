@@ -1,4 +1,4 @@
-import { Box, Paper } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 import { ReactNode } from "react";
 
 interface LoginProps {
@@ -21,18 +21,25 @@ export const LoginLayout = ({ children, title }: LoginProps) => {
       <Paper
         elevation={24}
         sx={{
-          display: "flex",
-          alignItems: "center",
           justifyContent: "center",
-
           width: "35vw",
           minHeight: "45vh",
           borderRadius: "5%",
-          minWidth: "fit-content",
         }}
       >
-        <h2>{title}</h2>
-        {children}
+        <Typography
+          variant="h2"
+          component="h2"
+          sx={{
+            textAlign: "center",
+            fontSize: "1.75rem",
+            padding: "2rem",
+            fontWeight: 500,
+          }}
+        >
+          {title}
+        </Typography>
+        <Box>{children}</Box>
       </Paper>
     </Box>
   );
