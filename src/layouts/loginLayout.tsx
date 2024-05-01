@@ -1,6 +1,7 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { ReactNode } from "react";
 import { StyledPaper } from "../components/Paper/Paper.styled";
+import { Typography } from "../components/Typography/Typography";
 
 interface LoginProps {
   children: ReactNode;
@@ -28,16 +29,7 @@ export const LoginLayout = ({ children, title }: LoginProps) => {
           borderRadius: "5%",
         }}
       >
-        <Typography
-          variant="h2"
-          component="h2"
-          sx={{
-            textAlign: "center",
-            fontSize: "1.75rem",
-            padding: "2rem",
-            fontWeight: 500,
-          }}
-        >
+        <Typography variant="h2" component="h2">
           {title}
         </Typography>
         <Box>{children}</Box>

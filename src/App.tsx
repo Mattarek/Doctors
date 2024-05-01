@@ -29,12 +29,12 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <LoginLayout title="Zaloguj się">
-          <TextField label="Name" variant="outlined" />
+          {/* <TextField label="Name" variant="outlined" />
           <TextField label="Surname" variant="outlined" />
           <Button variant="contained" color="info" onAsyncClick={handleClick}>
             {t("buttonGetData")}
           </Button>
-          <Languages />
+          <Languages /> */}
         </LoginLayout>
       </ThemeProvider>
     </MuiThemeProvider>

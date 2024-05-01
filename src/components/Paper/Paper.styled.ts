@@ -2,14 +2,16 @@ import { Paper } from "@mui/material/";
 import styled from "styled-components";
 
 export const StyledPaper = styled(Paper)`
-  width: "35vw";
-  border-radius: "5%";
-  min-height: "45vh";
+  width: 35vw;
+  border-radius: 5%;
+  min-height: 45vh;
   justify-content: "center";
-  @media (max-width: 360px) {
+  @media (min-width: 0px) {
     min-width: 65vw;
+    border-radius: 25%;
   }
-  @media (max-width: 440px) {
+  @media (min-width: 361px) {
     min-width: 55vw;
+    border-radius: 10%;
   }
 `;
