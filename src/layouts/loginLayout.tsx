@@ -29,7 +29,7 @@ export const LoginLayout = ({ children, title }: LoginProps) => {
           borderRadius: "5%",
         }}
       >
-        <Typography variant="h2" component="h2">
+        <Typography variant="h1" component="h1">
           {title}
         </Typography>
         <Box>{children}</Box>
