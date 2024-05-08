@@ -1,5 +1,7 @@
-import { Box, Paper } from "@mui/material";
+import { Box } from "@mui/material";
 import { ReactNode } from "react";
+import { StyledPaper } from "../components/Paper/Paper.styled";
+import { Typography } from "../components/Typography/Typography";
 
 interface LoginProps {
   children: ReactNode;
@@ -18,22 +20,20 @@ export const LoginLayout = ({ children, title }: LoginProps) => {
         height: "100vh",
       }}
     >
-      <Paper
+      <StyledPaper
         elevation={24}
         sx={{
-          display: "flex",
-          alignItems: "center",
           justifyContent: "center",
-
           width: "35vw",
           minHeight: "45vh",
           borderRadius: "5%",
-          minWidth: "fit-content",
         }}
       >
-        <h2>{title}</h2>
-        {children}
-      </Paper>
+        <Typography variant="h1" component="h1">
+          {title}
+        </Typography>
+        <Box>{children}</Box>
+      </StyledPaper>
     </Box>
   );
 };
